@@ -63,3 +63,46 @@ void login_admin(int total_admins,ADMIN admins[]) //verificar se um administrado
 	}
 	return;
 }
+
+void gerir_admins(char user[])
+{
+	int opcao = -1;
+	while(opcao != 0)
+	{
+		printf("1. Perguntas\n");
+		printf("0. Sair\n");
+		scanf("%d", &opcao);
+		switch(opcao)
+		{
+			case 1:
+			{
+				ELEMM *iniELEMM=NULL;
+				ELEMM *fimELEMM=NULL;
+				lerPerguntasBinario(&iniELEMM, &fimELEMM);
+				printf("1. Adicionar Pergunta Escolha Multipla\n");
+				printf("2. Listar Pergunta Escolha Multipla\n");
+				int opcao2 = 0;
+				scanf("%d", &opcao2);
+				switch(opcao2)
+				{
+					case 1:
+					{
+						criarPerguntaMultipla(iniELEMM, fimELEMM);
+						break;
+					}
+					case 2:
+					{
+						listarPerguntasMultipla(iniELEMM);
+						break;
+					}
+				}
+				break;
+			}
+			case 0:
+			{
+				return;
+				break;
+			}
+		}
+	}
+}
