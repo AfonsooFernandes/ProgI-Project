@@ -137,3 +137,20 @@ int escreveBinMultipla(ELEMM *iniELEMM) //escrever os dados da lista em um arqui
 
     return 0;
 }
+
+void lerPerguntasBinario(ELEMM **iniELEMM, ELEMM **fimELEMM) // ler os dados de um arquivo bin�rio e criar uma lista de perguntas de escolha multipla
+{
+    FILE *fp = fopen("PerguntasMultiplas.dat", "rb");
+    if (fp == NULL)
+    {
+        printf("Erro ao abrir o arquivo\n");
+        return;
+    }
+
+    ELEMM pergunta;
+    while (fread(&pergunta, sizeof(ELEMM), 1, fp) == 1)
+    {
+        inserirPerguntaMultipla(iniELEMM, fimELEMM, pergunta.PMULTIPLA);
+    }
+    fclose(fp);
+}
