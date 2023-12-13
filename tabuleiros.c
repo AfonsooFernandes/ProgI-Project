@@ -81,3 +81,14 @@ int jogar(JOGADOR players[], int qtd, int casa[], int n_casas, int total_jogador
 		}
 	}
 }
+
+char* dataAtual() //retorna a data atual no formato de uma string. 
+{
+	time_t t = time(NULL);
+	struct tm *data = localtime(&t);
+	static char dataStr[11];
+	
+	strftime(dataStr, sizeof(dataStr), "%d/%m/%Y", data);
+	
+	return dataStr;
+}
