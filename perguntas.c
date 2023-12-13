@@ -34,3 +34,106 @@ void listarPerguntasMultipla(ELEMM *iniELEMM) //A fun??o percorre a lista e impr
         atual = atual->seguinte;
     }
 }
+
+int verificarRespostaCorreta(ELEMM *iniELEMM, char resposta[]) //A fun??o percorre a lista e verifica se a resposta fornecida ? igual ? resposta correta de alguma pergunta de m?ltipla escolha.
+{
+    ELEMM* atual = iniELEMM;
+    while (atual != NULL)
+    {
+        if (strcmp(atual->PMULTIPLA.respostacerta, resposta) == 0) {
+            return 1;
+        }
+        atual = atual->seguinte;
+    }
+    return 0;
+}
+
+
+
+void criarPerguntaMultipla(ELEMM *iniELEMM, ELEMM *fimELEMM) //FUNCAO PARA CRIAR UMA NOVA PERGUNTA DE ESCOLHA MULTIPLA
+{
+    PMULTIPLA aux;
+    printf("Introduza a pergunta: ");
+    fflush(stdin);
+    gets(aux.pergunta);
+
+    printf("Introduza a resposta A: ");
+    fflush(stdin);
+    gets(aux.respostaA);
+
+    printf("Introduza a resposta B: ");
+    fflush(stdin);
+    gets(aux.respostaB);
+
+    printf("Introduza a resposta C: ");
+    fflush(stdin);
+    gets(aux.respostaC);
+
+	printf("Introduza a resposta D: ");
+    fflush(stdin);
+    gets(aux.respostaD);
+
+    printf("Introduza a resposta Certa: ");
+    fflush(stdin);
+    gets(aux.respostacerta);
+
+    inserirPerguntaMultipla(&iniELEMM,&fimELEMM,aux);
+    escreveBinMultipla(iniELEMM);
+}
+
+int inserirPerguntaMultipla(ELEMM **iniELEMM, ELEMM **fimELEMM, PMULTIPLA aux) //criar um novo elemento ELEMM, preencher seus campos com os valores da estrutura aux e inserir esse elemento no in�cio da lista
+{
+    ELEMM *novo = NULL;
+
+    novo = (ELEMM*)calloc(1, sizeof(ELEMM));
+    if (novo == NULL) {
+        printf("Out of memory!!!\n");
+        return -1;
+    }
+
+    novo->PMULTIPLA = aux;
+    novo->anterior = NULL;
+    novo->seguinte = NULL;
+
+    if (*iniELEMM == NULL)
+    {
+        *iniELEMM = novo;
+        *fimELEMM = novo;
+    } else
+    {
+        (*iniELEMM)->anterior = novo;
+        novo->seguinte = *iniELEMM;
+        *iniELEMM = novo;
+    }
+
+    return 0;
+}
+
+
+
+
+int escreveBinMultipla(ELEMM *iniELEMM) //escrever os dados da lista em um arquivo bin�rio
+{
+    if (iniELEMM == NULL)
+    {
+        printf("N?o existem Respostas Multiplas para guardar!\n");
+        return -1;
+    }
+
+    FILE *fp = fopen("PerguntasMultiplas.dat", "wb");
+    if (fp == NULL)
+    {
+        printf("Erro ao abrir o arquivo!\n");
+        return -1;
+    }
+
+    ELEMM *aux = iniELEMM;
+    while (aux != NULL)
+    {
+        fwrite(aux, sizeof(ELEMM), 1, fp);
+        aux = aux->seguinte;
+    }
+    fclose(fp);
+
+    return 0;
+}
