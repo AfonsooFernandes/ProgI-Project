@@ -16,3 +16,12 @@ typedef struct elemM{
 	struct elemM *seguinte;	 
 	struct elemM *anterior;	
 }ELEMM;
+
+ELEMM* imprimirPerguntas(ELEMM* iniELEMM) ;
+void listarPerguntasMultipla(ELEMM *iniELEMM);
+int verificarRespostaCorreta(ELEMM *iniELEMM, char resposta[]);
+int escreveBinMultipla (ELEMM *iniELEMM);
+int inserirPerguntaMultipla(ELEMM **iniELEMM, ELEMM **fimELEMM, PMULTIPLA aux);
+int removerPerguntaMultipla(ELEMM **iniELEMM, ELEMM **fimELEMM);
+void criarPerguntaMultipla(ELEMM *iniELEMM,ELEMM *fimELEMM);
+void lerPerguntasBinario(ELEMM **iniELEMM, ELEMM **fimELEMM);
