@@ -1,38 +1,66 @@
-#include "tabuleiros.h"
+#include "jogadores.h"
+#include "admin.h"
 
-int escolher_tabuleiro(JOGADOR players[], int qtd, int total_jogadores) //PERMITE AO JOGADOR ESCOLHER O TAMANHO DO TABULEIRO
+int menu()
 {
-	int option = 0;
-	system("cls");
+	int option=0;
+	system("cls");	
 	printf("\n\n\t/////////////////////////////////////\n");
 	printf("\t/////////////////////////////////////\n");
-	printf("\t/////////////////////////////////////\n");	
+	printf("\t/////////////////////////////////////\n");
 	printf("\n\t\tBem-vindo ao GOOSE GAME!\n\n");
 	printf("\t/////////////////////////////////////\n");
 	printf("\t/////////////////////////////////////\n");
 	printf("\t/////////////////////////////////////\n\n\n");
-	printf("Escolha o tamanho do tabuleiro:\n\n");
-	printf("1. S-20 casas\n");
-	printf("2. M-30 casas\n");
-	printf("3. L-50 casas\n\n");
-	printf("Escola a opcao:\n");
-	scanf("%d", &option);
-	switch(option)
+	printf("\tEscolha uma opcao:\n\n");
+	printf("\t1. Administrar o jogo\n");
+	printf("\t2. Jogar\n");
+	printf("\t3. Listar jogadores por nome\n");
+	printf("\t4. Listar jogadores por idade\n");
+	printf("\t5. Listar jogadores por data de jogo\n");
+	printf("\t6. Sair\n\n");
+	printf("\t   Prima a sua opcao:\n");
+	scanf("\t%d", &option);
+	return option;
+}
+
+int main()
+{
+	int total_admins = 0;
+	int total_jogadores = 0;
+	total_jogadores = readPlayers(jogadores);
+	int option = -1;
+	while(option!= 0)
 	{
-		case 1:
+		option = menu();
+		switch(option)
 		{
-			jogar(players, qtd, casas1, casas_1, total_jogadores);
-			break;
-		}
-		case 2:
-		{
-			jogar(players, qtd, casas2, casas_2, total_jogadores);
-			break;
-		}
-		case 3:
-		{
-			jogar(players, qtd, casas3, casas_3, total_jogadores);
-			break;
+			case 1:
+				{
+					login_admin(total_admins,admins);
+					break;
+			}
+			case 2:
+				{
+					login_players(total_jogadores,jogadores);
+					break;
+			}
+			case 3:
+				{
+					show_name(total_jogadores,jogadores);
+					break;
+			}
+			case 4:
+				{
+					show_age(total_jogadores,jogadores);
+					break;
+			}
+			case 5:
+				{
+					show_date(total_jogadores,jogadores);
+					break;
+			}
 		}
 	}
+	return 0;
 }
