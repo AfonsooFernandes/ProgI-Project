@@ -35,6 +35,7 @@ void listarPerguntasMultipla(ELEMM *iniELEMM) //A fun??o percorre a lista e impr
     }
 }
 
+
 int verificarRespostaCorreta(ELEMM *iniELEMM, char resposta[]) //A fun??o percorre a lista e verifica se a resposta fornecida ? igual ? resposta correta de alguma pergunta de m?ltipla escolha.
 {
     ELEMM* atual = iniELEMM;
@@ -81,7 +82,7 @@ void criarPerguntaMultipla(ELEMM *iniELEMM, ELEMM *fimELEMM) //FUNCAO PARA CRIAR
     escreveBinMultipla(iniELEMM);
 }
 
-int inserirPerguntaMultipla(ELEMM **iniELEMM, ELEMM **fimELEMM, PMULTIPLA aux) //criar um novo elemento ELEMM, preencher seus campos com os valores da estrutura aux e inserir esse elemento no inï¿½cio da lista
+int inserirPerguntaMultipla(ELEMM **iniELEMM, ELEMM **fimELEMM, PMULTIPLA aux) //criar um novo elemento ELEMM, preencher seus campos com os valores da estrutura aux e inserir esse elemento no início da lista
 {
     ELEMM *novo = NULL;
 
@@ -112,7 +113,7 @@ int inserirPerguntaMultipla(ELEMM **iniELEMM, ELEMM **fimELEMM, PMULTIPLA aux) /
 
 
 
-int escreveBinMultipla(ELEMM *iniELEMM) //escrever os dados da lista em um arquivo binï¿½rio
+int escreveBinMultipla(ELEMM *iniELEMM) //escrever os dados da lista em um arquivo binário
 {
     if (iniELEMM == NULL)
     {
@@ -138,7 +139,7 @@ int escreveBinMultipla(ELEMM *iniELEMM) //escrever os dados da lista em um arqui
     return 0;
 }
 
-void lerPerguntasBinario(ELEMM **iniELEMM, ELEMM **fimELEMM) // ler os dados de um arquivo binï¿½rio e criar uma lista de perguntas de escolha multipla
+void lerPerguntasBinario(ELEMM **iniELEMM, ELEMM **fimELEMM) // ler os dados de um arquivo binário e criar uma lista de perguntas de escolha multipla
 {
     FILE *fp = fopen("PerguntasMultiplas.dat", "rb");
     if (fp == NULL)

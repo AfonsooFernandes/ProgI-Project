@@ -28,7 +28,7 @@ JOGADOR create_player(int total_jogadores, JOGADOR jogadores[]) //FUNCAO PARA CR
 void login_players(int total_jogadores, JOGADOR jogadores[])
 {
     int qtd = 0; //N* de jogadores para jogar
-    printf("Nï¿½ jogadores[2-4]: ");
+    printf("Nº jogadores[2-4]: ");
     scanf("%i", &qtd);
 
     JOGADOR *players = (JOGADOR*)malloc(qtd * sizeof(JOGADOR)); //memoria alocada para array de jogadores "players"

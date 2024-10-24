@@ -37,7 +37,7 @@ int escolher_tabuleiro(JOGADOR players[], int qtd, int total_jogadores) //PERMIT
 	}
 }
 
-int jogar(JOGADOR players[], int qtd, int casa[], int n_casas, int total_jogadores) //Cï¿½DIGO DO JOGO
+int jogar(JOGADOR players[], int qtd, int casa[], int n_casas, int total_jogadores) //CÓDIGO DO JOGO
 {
 	ELEMM *iniELEMM=NULL;
 	ELEMM *fimELEMM=NULL;

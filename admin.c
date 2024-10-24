@@ -20,7 +20,7 @@ void novo_admin(int total_admins, ADMIN admins[]) //adicionar um novo administra
 	total_admins++;
 }
 
-void login_admin(int total_admins,ADMIN admins[]) //verificar se um administrador estï¿½ registrado no arquivo "admins.txt" com base no nome de usuï¿½rio e senha fornecidos.
+void login_admin(int total_admins,ADMIN admins[]) //verificar se um administrador está registrado no arquivo "admins.txt" com base no nome de usuário e senha fornecidos.
 {
 	char line[100];
 	char username[50], password[50];
